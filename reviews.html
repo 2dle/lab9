@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .review {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .rating {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Отзывы и оценки</h1>
+        <form method="post" action="/reviews">
+            <label for="text">Текст отзыва:</label><br>
+            <textarea id="text" name="text" rows="4" cols="50"></textarea><br>
+            <label for="rate">Оценка (от 1 до 5):</label><br>
+            <input type="number" id="rate" name="rate" min="1" max="5"><br><br>
+            <button type="submit">Отправить</button>
+        </form>
+        <hr>
+        {% for review in reviews %}
+        <div class="review">
+            <p>{{ review.text }}</p>
+            <p class="rating">Оценка: {{ review.rate }}/5</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
